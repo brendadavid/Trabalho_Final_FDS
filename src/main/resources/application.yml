@@ -1,0 +1,14 @@
+#spring.datasource.data=classpath*:db/data.sql
+#spring.jpa.hibernate.ddl-auto=create
+#logging.level.org.hibernate.SQL=DEBUG
+spring:
+  datasource:
+    driver-class-name: ${DATABASE_DRIVER:org.h2.Driver}
+    password: ${DATABASE_PASSWORD:password}
+    url: ${DATABASE_URL:jdbc:h2:mem:fds}
+    username: ${DATABASE_USERNAME:sa}
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
