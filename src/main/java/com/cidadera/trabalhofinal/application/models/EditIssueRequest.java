@@ -1,32 +1,27 @@
-package com.cidadera.trabalhofinal.business.entities;
+package com.cidadera.trabalhofinal.application.models;
 
+import com.cidadera.trabalhofinal.business.entities.Issue;
 import com.cidadera.trabalhofinal.business.entities.enums.IssueCategoryEnum;
 import com.cidadera.trabalhofinal.business.entities.enums.IssueStatusEnum;
+import com.cidadera.trabalhofinal.business.entities.mappers.IssueInput;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity(name="issues")
-public class Issue {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class EditIssueRequest implements IssueInput {
+    private long id;
     private String title;
     private String description;
     private LocalDate date;
     private String neighborhood;
     private String street;
-    @Enumerated(EnumType.STRING)
     private IssueCategoryEnum category;
     private String imageLink;
-    @Enumerated(EnumType.STRING)
-    private IssueStatusEnum issueStatus;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -74,8 +69,8 @@ public class Issue {
         return category;
     }
 
-    public void setCategory(IssueCategoryEnum type) {
-        this.category = type;
+    public void setCategory(IssueCategoryEnum category) {
+        this.category = category;
     }
 
     public String getImageLink() {
@@ -86,11 +81,20 @@ public class Issue {
         this.imageLink = imageLink;
     }
 
-    public IssueStatusEnum getIssueStatus() {
-        return issueStatus;
-    }
+    @Override
+    public Issue toEntity() {
+        Issue issue = new Issue();
+        issue.setId(this.getId());
+        issue.setTitle(this.getTitle());
+        issue.setDescription(this.getDescription());
+        issue.setDate(this.getDate());
+        issue.setNeighborhood(this.getNeighborhood());
+        issue.setStreet(this.getStreet());
+        issue.setCategory(this.getCategory());
+        issue.setImageLink(this.getImageLink());
+        issue.setIssueStatus(IssueStatusEnum.ABERTA);
 
-    public void setIssueStatus(IssueStatusEnum issueStatus) {
-        this.issueStatus = issueStatus;
+        return issue;
     }
 }
+
