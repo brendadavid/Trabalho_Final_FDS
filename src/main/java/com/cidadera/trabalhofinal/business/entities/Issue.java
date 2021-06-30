@@ -5,6 +5,7 @@ import com.cidadera.trabalhofinal.business.entities.enums.IssueStatusEnum;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity(name="issues")
 public class Issue {
@@ -21,6 +22,8 @@ public class Issue {
     private String imageLink;
     @Enumerated(EnumType.STRING)
     private IssueStatusEnum issueStatus;
+    @OneToMany(mappedBy="issue")
+    private List<Comment> comment;
 
     public Long getId() {
         return id;
@@ -92,5 +95,13 @@ public class Issue {
 
     public void setIssueStatus(IssueStatusEnum issueStatus) {
         this.issueStatus = issueStatus;
+    }
+
+    public List<Comment> getComment() {
+        return comment;
+    }
+
+    public void setComment(List<Comment> comment) {
+        this.comment = comment;
     }
 }

@@ -36,7 +36,7 @@ public class IssueController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<IssueResponse> findIssueById(@PathVariable long userId) {
+    public ResponseEntity<IssueResponse> findIssueById(@PathVariable Long userId) {
        return findIssueUC.byId(userId)
                .map(ResponseEntity::ok)
                .orElse(ResponseEntity.notFound().build());
