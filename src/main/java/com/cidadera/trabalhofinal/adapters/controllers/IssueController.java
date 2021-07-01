@@ -1,8 +1,8 @@
 package com.cidadera.trabalhofinal.adapters.controllers;
 
-import com.cidadera.trabalhofinal.application.models.EditIssueRequest;
-import com.cidadera.trabalhofinal.application.models.IssueResponse;
-import com.cidadera.trabalhofinal.application.models.OpenIssueRequest;
+import com.cidadera.trabalhofinal.application.models.request.EditIssueRequest;
+import com.cidadera.trabalhofinal.application.models.response.IssueResponse;
+import com.cidadera.trabalhofinal.application.models.request.OpenIssueRequest;
 import com.cidadera.trabalhofinal.application.useCases.EditIssueUC;
 import com.cidadera.trabalhofinal.application.useCases.FindIssueUC;
 import com.cidadera.trabalhofinal.application.useCases.OpenIssueUC;

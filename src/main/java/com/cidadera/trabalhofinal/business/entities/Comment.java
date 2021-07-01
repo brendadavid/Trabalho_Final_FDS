@@ -12,6 +12,18 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name="issue_id", nullable=false)
     private Issue issue;
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable=false)
+    private User user;
+
+    public Comment() {
+    }
+
+    public Comment(String comment, Issue issue, User user) {
+        this.comment = comment;
+        this.issue = issue;
+        this.user = user;
+    }
 
     public Long getId() {
         return id;
@@ -43,5 +55,13 @@ public class Comment {
 
     public void setIssue(Issue issue) {
         this.issue = issue;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

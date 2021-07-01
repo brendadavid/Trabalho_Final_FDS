@@ -1,4 +1,4 @@
-package com.cidadera.trabalhofinal.business.repositorios;
+package com.cidadera.trabalhofinal.business.repositories;
 
 import com.cidadera.trabalhofinal.business.entities.Comment;
 

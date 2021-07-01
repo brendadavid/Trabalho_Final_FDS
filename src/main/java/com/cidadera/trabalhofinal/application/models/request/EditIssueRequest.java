@@ -1,14 +1,15 @@
-package com.cidadera.trabalhofinal.application.models;
+package com.cidadera.trabalhofinal.application.models.request;
 
 import com.cidadera.trabalhofinal.business.entities.Issue;
+import com.cidadera.trabalhofinal.business.entities.User;
 import com.cidadera.trabalhofinal.business.entities.enums.IssueCategoryEnum;
 import com.cidadera.trabalhofinal.business.entities.enums.IssueStatusEnum;
 import com.cidadera.trabalhofinal.business.entities.mappers.IssueInput;
 
 import java.time.LocalDate;
-import java.util.function.Function;
 
-public class OpenIssueRequest implements IssueInput {
+public class EditIssueRequest implements IssueInput {
+    private long id;
     private String title;
     private String description;
     private LocalDate date;
@@ -16,6 +17,15 @@ public class OpenIssueRequest implements IssueInput {
     private String street;
     private IssueCategoryEnum category;
     private String imageLink;
+    private Long userId;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -73,9 +83,18 @@ public class OpenIssueRequest implements IssueInput {
         this.imageLink = imageLink;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     @Override
     public Issue toEntity() {
         Issue issue = new Issue();
+        issue.setId(this.getId());
         issue.setTitle(this.getTitle());
         issue.setDescription(this.getDescription());
         issue.setDate(this.getDate());
@@ -84,6 +103,9 @@ public class OpenIssueRequest implements IssueInput {
         issue.setCategory(this.getCategory());
         issue.setImageLink(this.getImageLink());
         issue.setIssueStatus(IssueStatusEnum.ABERTA);
+        User user = new User();
+        user.setId(this.getUserId());
+        issue.setUser(user);
 
         return issue;
     }

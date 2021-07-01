@@ -3,6 +3,7 @@ package com.cidadera.trabalhofinal.business.entities;
 import com.cidadera.trabalhofinal.business.entities.enums.UserTypeEnum;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name="users")
 public class User {
@@ -12,6 +13,18 @@ public class User {
     private String name;
     @Enumerated(EnumType.STRING)
     private UserTypeEnum userType;
+    @OneToMany(mappedBy="user")
+    private List<Issue> issues;
+    @OneToMany(mappedBy="user")
+    private List<Comment> comments;
+
+    public User() {
+    }
+
+    public User(String name, UserTypeEnum userType) {
+        this.name = name;
+        this.userType = userType;
+    }
 
     public long getId() {
         return id;
@@ -35,5 +48,21 @@ public class User {
 
     public void setUserType(UserTypeEnum userType) {
         this.userType = userType;
+    }
+
+    public List<Issue> getIssues() {
+        return issues;
+    }
+
+    public void setIssues(List<Issue> issues) {
+        this.issues = issues;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

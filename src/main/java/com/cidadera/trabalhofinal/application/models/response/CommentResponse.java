@@ -1,4 +1,4 @@
-package com.cidadera.trabalhofinal.application.models;
+package com.cidadera.trabalhofinal.application.models.response;
 
 import com.cidadera.trabalhofinal.business.entities.Comment;
 import com.cidadera.trabalhofinal.business.entities.mappers.CommentOutput;
@@ -9,12 +9,13 @@ public class CommentResponse implements CommentOutput<CommentResponse> {
     private Long issueId;
     private String comment;
     private String image;
+    private Long userId;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -42,14 +43,22 @@ public class CommentResponse implements CommentOutput<CommentResponse> {
         this.image = image;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     @Override
     public CommentResponse fromEntity(Comment comment) {
-
 
         this.setId(comment.getId());
         this.setIssueId(comment.getIssue().getId());
         this.setComment(comment.getComment());
         this.setImage(comment.getImage());
+        this.setUserId(comment.getUser().getId());
 
         return this;
     }

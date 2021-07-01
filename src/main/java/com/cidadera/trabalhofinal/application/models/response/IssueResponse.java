@@ -1,4 +1,4 @@
-package com.cidadera.trabalhofinal.application.models;
+package com.cidadera.trabalhofinal.application.models.response;
 
 import com.cidadera.trabalhofinal.business.entities.Issue;
 import com.cidadera.trabalhofinal.business.entities.enums.IssueCategoryEnum;
@@ -8,7 +8,7 @@ import com.cidadera.trabalhofinal.business.entities.mappers.IssueOutput;
 import java.time.LocalDate;
 
 public class IssueResponse implements IssueOutput<IssueResponse> {
-    private long id;
+    private Long id;
     private String title;
     private String description;
     private LocalDate date;
@@ -17,12 +17,13 @@ public class IssueResponse implements IssueOutput<IssueResponse> {
     private IssueCategoryEnum category;
     private String imageLink;
     private IssueStatusEnum issueStatus;
+    private Long userId;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -90,6 +91,14 @@ public class IssueResponse implements IssueOutput<IssueResponse> {
         this.issueStatus = issueStatus;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     @Override
     public IssueResponse fromEntity(Issue issue) {
 
@@ -102,6 +111,7 @@ public class IssueResponse implements IssueOutput<IssueResponse> {
         this.setCategory(issue.getCategory());
         this.setImageLink(issue.getImageLink());
         this.setIssueStatus(issue.getIssueStatus());
+        this.setUserId(issue.getUser().getId());
 
         return this;
     }

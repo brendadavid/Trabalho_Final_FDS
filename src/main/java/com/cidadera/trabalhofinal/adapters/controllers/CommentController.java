@@ -1,6 +1,8 @@
 package com.cidadera.trabalhofinal.adapters.controllers;
 
-import com.cidadera.trabalhofinal.application.models.*;
+import com.cidadera.trabalhofinal.application.models.request.EditCommentRequest;
+import com.cidadera.trabalhofinal.application.models.request.OpenCommentRequest;
+import com.cidadera.trabalhofinal.application.models.response.CommentResponse;
 import com.cidadera.trabalhofinal.application.useCases.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

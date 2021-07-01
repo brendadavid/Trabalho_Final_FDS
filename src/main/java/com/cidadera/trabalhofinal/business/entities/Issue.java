@@ -23,7 +23,24 @@ public class Issue {
     @Enumerated(EnumType.STRING)
     private IssueStatusEnum issueStatus;
     @OneToMany(mappedBy="issue")
-    private List<Comment> comment;
+    private List<Comment> comments;
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable=false)
+    private User user;
+
+    public Issue() {
+    }
+
+    public Issue(String title, String description, LocalDate date, String neighborhood, String street, IssueCategoryEnum category, IssueStatusEnum issueStatus, User user) {
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.neighborhood = neighborhood;
+        this.street = street;
+        this.category = category;
+        this.issueStatus = issueStatus;
+        this.user = user;
+    }
 
     public Long getId() {
         return id;
@@ -97,11 +114,19 @@ public class Issue {
         this.issueStatus = issueStatus;
     }
 
-    public List<Comment> getComment() {
-        return comment;
+    public List<Comment> getComments() {
+        return comments;
     }
 
-    public void setComment(List<Comment> comment) {
-        this.comment = comment;
+    public void setComments(List<Comment> comment) {
+        this.comments = comment;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

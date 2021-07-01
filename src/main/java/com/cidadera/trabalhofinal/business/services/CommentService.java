@@ -4,7 +4,7 @@ import com.cidadera.trabalhofinal.business.entities.Comment;
 import com.cidadera.trabalhofinal.business.entities.Issue;
 import com.cidadera.trabalhofinal.business.entities.mappers.CommentInput;
 import com.cidadera.trabalhofinal.business.entities.mappers.CommentOutput;
-import com.cidadera.trabalhofinal.business.repositorios.CommentRepository;
+import com.cidadera.trabalhofinal.business.repositories.CommentRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 

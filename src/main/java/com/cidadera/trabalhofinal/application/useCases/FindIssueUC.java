@@ -1,8 +1,7 @@
 package com.cidadera.trabalhofinal.application.useCases;
 
-import com.cidadera.trabalhofinal.application.models.IssueResponse;
+import com.cidadera.trabalhofinal.application.models.response.IssueResponse;
 import com.cidadera.trabalhofinal.application.services.IssueServiceImpl;
-import com.cidadera.trabalhofinal.business.entities.Issue;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;

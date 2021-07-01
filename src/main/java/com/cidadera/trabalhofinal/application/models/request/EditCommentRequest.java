@@ -1,7 +1,8 @@
-package com.cidadera.trabalhofinal.application.models;
+package com.cidadera.trabalhofinal.application.models.request;
 
 import com.cidadera.trabalhofinal.business.entities.Comment;
 import com.cidadera.trabalhofinal.business.entities.Issue;
+import com.cidadera.trabalhofinal.business.entities.User;
 import com.cidadera.trabalhofinal.business.entities.mappers.CommentInput;
 
 public class EditCommentRequest implements CommentInput {
@@ -9,6 +10,7 @@ public class EditCommentRequest implements CommentInput {
     private Long issueId;
     private String comment;
     private String image;
+    private Long userId;
 
     public Long getId() {
         return id;
@@ -22,7 +24,7 @@ public class EditCommentRequest implements CommentInput {
         return issueId;
     }
 
-    public void setIssueId(long issueId) {
+    public void setIssueId(Long issueId) {
         this.issueId = issueId;
     }
 
@@ -42,6 +44,14 @@ public class EditCommentRequest implements CommentInput {
         this.image = image;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     @Override
     public Comment toEntity() {
         Comment comment = new Comment();
@@ -51,6 +61,9 @@ public class EditCommentRequest implements CommentInput {
         comment.setId(this.getId());
         comment.setComment(this.getComment());
         comment.setImage(this.getImage());
+        User user = new User();
+        user.setId(this.getUserId());
+        comment.setUser(user);
 
         return comment;
     }

@@ -1,7 +1,7 @@
 package com.cidadera.trabalhofinal.application.useCases;
 
-import com.cidadera.trabalhofinal.application.models.CommentResponse;
-import com.cidadera.trabalhofinal.application.models.OpenCommentRequest;
+import com.cidadera.trabalhofinal.application.models.response.CommentResponse;
+import com.cidadera.trabalhofinal.application.models.request.OpenCommentRequest;
 import com.cidadera.trabalhofinal.application.services.CommentServiceImpl;
 import org.springframework.stereotype.Component;
 
