@@ -231,7 +231,7 @@ class IssueTest {
     void getComment() throws  NoSuchFieldException, IllegalAccessException {
         final Issue issueComment = new Issue();
 
-        final List result = issueComment.getComment();
+        final List result = issueComment.getComments();
 
         assertEquals(result,  null);
     }
@@ -240,9 +240,9 @@ class IssueTest {
     void setComment() throws  NoSuchFieldException, IllegalAccessException{
         final Issue issueComment = new Issue();
 
-        issueComment.setComment(null);
+        issueComment.setComments(null);
 
-        final Field field = issueComment.getClass().getDeclaredField("comment");
+        final Field field = issueComment.getClass().getDeclaredField("comments");
         field.setAccessible(true);
         assertEquals(field.get(issueComment), null);
     }
